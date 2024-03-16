@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body class="container ">
+<div class="input-group rounded my-5 ">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <span class="input-group-text border-0" id="search-addon">
+        <button id="search-button" type="button" class="btn-primary w-25 h-25 border-dark-subtle" th:onclick="'window.location.href = \'/todo">
+             <i  class="fas fa-search"></i>
+        </button>
+
+  </span>
+
+</div>
+<table class="table ">
+  <thead>
+  <tr>
+    <th scope="col" >ID</th>
+    <th scope="col">TASK</th>
+    <th scope="col">DESCRIPTION</th>
+    <th scope="col">IS_DONE</th>
+    <th scope="col">DATE</th>
+    <th scope="col" class="mx-5">ACTION</th>
+  </tr>
+  </thead>
+  <tbody th:if="${todos}">
+  <tr scope="row" >
+    <td th:text="${todos.id}" ></td>
+    <td th:text="${todos.task}"></td>
+    <td th:text="${todos.description}"></td>
+    <td th:text="${todos.isDone}"></td>
+    <td th:text="${todos.createdAt}"></td>
+    <td >
+      <button type="button" class="btn btn-primary mx-3" th:onclick="'window.location.href = \'/todo/edit/new">Add</button>
+      <button type="button" class="btn btn-success mx-3" th:onclick="'window.location.href = \'/todo/edit/\' + ${todo.id}'">Edit</button>
+      <button type="button" class="btn btn-danger mx-3" th:onclick="'window.location.href = \'/todo/delete/\' + ${todo.id}'">Deleted</button>
+         </td>
+  </tr>
+  </tbody>
+</table>
+
+<script>
+  import { Input, initMDB } from "mdb-ui-kit";
+
+  initMDB({ Input });
+
+  const searchButton = document.getElementById('search-button');
+  const searchInput = document.getElementById('search-input');
+  searchButton.addEventListener('click', () => {
+    const inputValue = searchInput.value;
+    alert(inputValue);
+  });
+</script>
+</body>
+</html>

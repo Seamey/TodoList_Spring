@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns: xmlns:>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="container mx-auto">
+<h1 class="text-info">Add New Todo</h1>
+<form action="/todo/new" method="post" th:each="todo:${todo}">
+    <label for="task">ID:</label>
+    <input th:text="${todo.id}" type="text" id="id" name="id" class="w-75 " required>
+    <br>
+    <label for="task">Task:</label>
+    <input type="text" id="task" name="task" class="w-75" required>
+    <br>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" class="w-75" required></textarea>
+    <br>
+    <label for="task">IsDone:</label>
+    <input type="text" id="isDone" name="isDone" class="w-75" required>
+    <br>
+    <label for="task">Date:</label>
+    <input type="text" id="createAt" name="Date" class="w-75">
+
+    <button type="submit" class="btn btn-primary" th:onclick="'window.location.href = \'/todo/new">Add Todo</button>
+</form>
+</body>
+
+</html>
